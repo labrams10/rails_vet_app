@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :verify_login
+  # before_action :verify_login
 
   def index
   end

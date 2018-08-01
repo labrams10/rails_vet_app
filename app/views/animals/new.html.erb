@@ -8,9 +8,9 @@
   <br>
   <%= animal.label "name" %>:
   <%= animal.text_field :name %><br />
-  <%= animal.label :breed %>:
+  <%= animal.label "breed" %>:
   <%= animal.text_field :breed %><br />
-  <%= animal.label :age %>:
-  <%= animal.text_field :breed %><br /><br>
-  <%= link_to "Create New Animal", user_animals_path %>
+  <%= animal.label "age" %>:
+  <%= animal.number_field :age %><br /><br>
+  <%= animal.submit "Create New Animal" %>
 <% end %>

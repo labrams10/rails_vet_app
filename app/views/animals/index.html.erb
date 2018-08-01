@@ -4,7 +4,7 @@
 <h2><%= animal.name %></h2>
 <h3><%= animal.breed %></h3>
 <% end %>
-<%= link_to "Create New Animal", new_user_animal_path %>
+<%= link_to "Create New Animal", new_user_animal_path(current_user) %>
 
 <!--
  create_table "animals", force: :cascade do |t|

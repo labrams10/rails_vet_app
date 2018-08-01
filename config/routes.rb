@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   resources :vets
   resources :animals
-  resources :appointments
   devise_for :users
-  # root 'sessions#new'
+  resources :users do
+    resources :animals
+    resources :appointments
+  end
+
+  root "static_pages#home"
   delete '/session/', to: 'sessions#destroy'
-  get '/users/new', to: 'users#new', as: 'new_user'
-  get '/users', to:'users#index', as: 'users'
-  get '/users/:id', to: 'users#show', as: 'user'
   get '/appointments', to: 'appointments#index', as: 'appointments'
+  get '/appointments/:id/edit', to: 'appointments#edit', as: 'edit_appointment'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

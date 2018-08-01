@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsVetApp</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rails Veterinary Services</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"/>
+    <link rel="stylesheet" href="assets/css/untitled.css"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand logo">Rails Veterinary Services</a>
+        <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li role="presentation"><%= link_to "My Animals", user_animals_path(1), class: "nav-item nav-link active" %></a>
+              </li>
+              <li role="presentation"><%= link_to "Logout", destroy_user_session_path, class: "nav-item nav-link active" %></a></li>
+          <% else %>
+            <li role="presentation"><%= link_to "Login", new_user_session_path, class: "nav-item nav-link active" %></a>
+          </li>
+          <li role="presentation"><%= link_to "Signup", new_user_registration_path, class: "nav-item nav-link active" %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</nav>
+<main class="page">
+<section class="clean-block" style="background-color:rgba(0, 255, 0, 0.3);">
+  <div class="container clean-block">
+    <br>
+    <% if :form_errors %>
+    <%= yield :form_errors %>
+    <% end %>
     <%= yield %>
-  </body>
+    <div class="block-heading"></div>
+  </div>
+</section>
+</main>
+<footer class="page-footer dark">
+<div class="footer-copyright">
+  <p>© 2018 Copyright Text</p>
+</div>
+</footer>
+</body>
+
 </html>

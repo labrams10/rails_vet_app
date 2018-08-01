@@ -1,0 +1,16 @@
+<h1>Tell us a little about your new pet:</h1><br>
+<%= form_for @animal do |animal| %>
+  <% animal_types = ['cat', 'dog', 'other'] %>
+  <% animal_types.each do |species| %>
+    <%= animal.label species %>
+    <%= animal.check_box :species, {multiple: true}, species %>
+  <% end %>
+  <br>
+  <%= animal.label "name" %>:
+  <%= animal.text_field :name %><br />
+  <%= animal.label :breed %>:
+  <%= animal.text_field :breed %><br />
+  <%= animal.label :age %>:
+  <%= animal.text_field :breed %><br /><br>
+  <%= link_to "Create New Animal", user_animals_path %>
+<% end %>

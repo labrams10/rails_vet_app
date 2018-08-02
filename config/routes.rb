@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :vets
   resources :animals
-  devise_for :users
   resources :users do
     resources :animals
     resources :appointments

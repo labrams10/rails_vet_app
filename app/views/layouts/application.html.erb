@@ -26,15 +26,15 @@
             <% if user_signed_in? %>
              <li role="presentation"><%= link_to "Home", user_path(current_user), class: "nav-item nav-link active" %></a>
               </li>
-              <li role="presentation"><%= link_to "My Animals", user_animals_path(current_user), class: "nav-item nav-link active" %></a>
+              <li role="presentation"><%= link_to "My Pets", animal_path(current_user), class: "nav-item nav-link active" %></a>
               </li>
               <li role="presentation"><%= link_to "My Appointments", user_appointments_path(current_user), class: "nav-item nav-link active" %></a>
               </li>
-              <li role="presentation"><%= link_to "Logout", destroy_user_session_path, class: "nav-item nav-link active" %></a></li>
+              <li role="presentation"><%= link_to "Logout", logout_path, class: "nav-item nav-link active" %></a></li>
           <% else %>
-            <li role="presentation"><%= link_to "Login", new_user_session_path, class: "nav-item nav-link active" %></a>
+            <li role="presentation"><%= link_to "Login", login_path, class: "nav-item nav-link active" %></a>
           </li>
-          <li role="presentation"><%= link_to "Signup", new_user_registration_path, class: "nav-item nav-link active" %></a>
+          <li role="presentation"><%= link_to "Signup", new_user_path, class: "nav-item nav-link active" %></a>
         </li>
       <% end %>
     </ul>
@@ -55,7 +55,7 @@
 </main>
 <footer class="page-footer dark">
 <div class="footer-copyright">
-  <p>© 2018 Copyright Text</p>
+  <p>© 2018 Copyright Rails Veterinary Services</p>
 </div>
 </footer>
 </body>

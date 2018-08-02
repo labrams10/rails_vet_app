@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  root "static_pages#home"
+  resources :users
+  post '/users/new', to: 'users#create'
+    resources :users do
+      resources :animals
+      resources :appointments
+    end
   resources :vets
   resources :animals
-  resources :users do
-    resources :animals
-    resources :appointments
-  end
-  resources :users
+
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   root "static_pages#home"
   delete '/session/', to: 'sessions#destroy'

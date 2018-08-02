@@ -1,11 +1,12 @@
-<h2>Hello, <%= @user.email %>!</h2>
-<h3>Your Pets:</h3>
-<% @user.animals.each do |animal| %>
-<%= animal.name %>
-<% end %>
-
-<h3>Your Appointments:</h3>
-<% @user.appointments.each do |appointment| %>
+<h2>Hello, <%= current_user.name %>!</h2><br>
+<h3>My Pets:</h3><br>
+  <% current_user.animals.each do |animal| %>
+    <ol>
+      <%= animal.name %>
+    </ol>
+  <% end %><br>
+<h3>My Appointments:</h3>
+<% current_user.appointments.each do |appointment| %>
 <%= appointment.date %>
 <%= appointment.time %>
 <% end %>

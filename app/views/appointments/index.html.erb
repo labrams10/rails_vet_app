@@ -1,1 +1,15 @@
-<h3>Your Next Appointment:</h3>
+<h2>Current Appointments:</h2><br>
+<% current_user.appointments.each do |appointment| %>
+<ol>
+<%= appointment.date.strftime("%B %d, %Y") %> at
+<%= appointment.time.strftime("%l %P") %><br>
+ with
+<%= appointment.vet.name %>
+</ol>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Want to schedule a new appointment? Click <%= link_to "here", new_user_appointment_path(current_user) %>.</p>

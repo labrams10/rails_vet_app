@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  # root "static_pages#home"
+  root "static_pages#home"
   delete '/session/', to: 'sessions#destroy'
   get '/appointments', to: 'appointments#index', as: 'appointments'
   get '/appointments/:id/edit', to: 'appointments#edit', as: 'edit_appointment'

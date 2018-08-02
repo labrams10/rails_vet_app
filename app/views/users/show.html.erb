@@ -1,4 +1,11 @@
-<h3>Pet Name: <%= @animal.name %> </h3>
-<p> Appointment Date: <%= @appointment.date %></p>
-<p> Appointment Time: <%= @appointment.time %></p>
-<%= link_to "Cancel Appointment", session_path, method: :delete %>
+<h2>Hello, <%= @user.email %>!</h2>
+<h3>Your Pets:</h3>
+<% @user.animals.each do |animal| %>
+<%= animal.name %>
+<% end %>
+
+<h3>Your Appointments:</h3>
+<% @user.appointments.each do |appointment| %>
+<%= appointment.date %>
+<%= appointment.time %>
+<% end %>

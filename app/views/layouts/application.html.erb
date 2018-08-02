@@ -24,7 +24,9 @@
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="nav navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <li role="presentation"><%= link_to "My Animals", user_animals_path(1), class: "nav-item nav-link active" %></a>
+              <li role="presentation"><%= link_to "My Animals", user_animals_path(current_user), class: "nav-item nav-link active" %></a>
+              </li>
+              <li role="presentation"><%= link_to "My Appointments", user_appointment_path(current_user), class: "nav-item nav-link active" %></a>
               </li>
               <li role="presentation"><%= link_to "Logout", destroy_user_session_path, class: "nav-item nav-link active" %></a></li>
           <% else %>

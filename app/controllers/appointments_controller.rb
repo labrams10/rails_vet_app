@@ -4,8 +4,7 @@ class AppointmentsController < ApplicationController
   def index
   end
 
-  def display_appointment
-    binding.pry
+  def show
     @appointment = Appointment.find_by(params[:id])
   end
 end

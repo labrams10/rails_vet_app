@@ -1,4 +1,5 @@
-<h1>Tell us a little about your new pet:</h1><br>
+<h1><b>So you got a new pet...</b></h1>
+<h3><i>Tell us more!</i></h3><br>
 <%= form_for @animal do |animal| %>
   <% animal_types = ['cat', 'dog', 'other'] %>
   <% animal_types.each do |species| %>
@@ -8,7 +9,7 @@
   <br>
   <%= animal.label "name" %>:
   <%= animal.text_field :name %><br />
-  <%= animal.label "breed" %>:
+  <%= animal.label "Breed/Species" %>:
   <%= animal.text_field :breed %><br />
   <%= animal.label "age" %>:
   <%= animal.number_field :age %> years<br />

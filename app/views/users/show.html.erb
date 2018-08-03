@@ -1,23 +1,19 @@
-<h1>Hello, <b><%= current_user.name %>!</b></h1><br>
-<h3>My Pets:</h3><br>
-<% if current_user.animals.none? %>
-    <i> There are no pets currently on file. </i>
-  <% end %>
-  <% current_user.animals.each do |animal| %>
-    <ol>
-      <%= link_to animal.name, user_animal_path(current_user, animal) %>
-    </ol>
-  <% end %>
+<h1>Hello, <b><%= current_user.name %>!</b></h1>
+<p>Click <%= link_to "here", user_animals_path(current_user) %> to see your pets.</p>
   <br>
-  <br>
-  <br>
-<h3>My Appointments:</h3>
+<h3>Upcoming Appointment:</h3>
 <% if current_user.appointments.none? %>
     <i>You have no pending appointments.</i>
 <% end %>
 <% current_user.appointments.each do |appointment| %>
-  <ol>
-    <%= appointment.date.strftime("%B %d, %Y") %> at
-    <%= appointment.time.strftime("%l %P") %><br>
-  </ol>
+    <%= appointment.date.strftime("%B %d, %Y") %>
+    <br>
+    at <%= appointment.time.strftime("%l %P") %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><b>We get it.</b> <i>Life happens.</i></h2>
+    <p>If something came up and you can no longer make your appointment, please <%= link_to "let us know.", user_appointments_path(current_user) %></p>
 <% end %>

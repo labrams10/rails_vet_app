@@ -1,18 +1,18 @@
-<h2>Current Appointments:</h2><br>
+<h2><b>Current Appointments:</b></h2>
+If you need to cancel an appointment, please select it below:
+<br>
+<br>
 <% if current_user.appointments.none? %>
-    <b><i> You have no pending appointments.</i></b>
+<b><i> You have no pending appointments.</i></b>
 <% end %>
-<% current_user.appointments.each do |appointment| %>
 <ol>
-<h2><%= appointment.date.strftime("%B %d, %Y") %></h2> at
-<%= appointment.time.strftime("%l %P") %><br>
- with Dr.
-<%= appointment.vet.name %>
+<% current_user.appointments.each do |appointment| %>
+  <%= link_to appointment.date.strftime("%B %d, %Y"), user_appointment_path(current_user, appointment)%><br>
+  <b>at <%= appointment.time.strftime("%l %P") %></b><br>
+  <i>with
+   Dr. <%= appointment.vet.name %></i>
 </ol>
-<%= link_to "Edit Appointment", edit_appointment_path(appointment) %><br>
 <% end %>
 <br>
 <br>
-<br>
-<br>
-<p>To schedule a new appointment, click <%= link_to "here", new_user_appointment_path(current_user) %>.</p>
+To schedule a new appointment, click <%= link_to "here", new_user_appointment_path(current_user) %>.

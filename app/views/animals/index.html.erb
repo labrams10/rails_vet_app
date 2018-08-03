@@ -1,23 +1,14 @@
-<h1>Your Pets:</h1>
-<br>
-<% @animals.each do |animal| %>
-<ol>
-<h2><b><%= link_to animal.name, user_animal_path(current_user, animal) %></b></h2>
-<p><%= animal.age %> year(s) old</p>
-<i><p><%= animal.breed %></p></i>
-</ol>
-<% end %><br>
-<%= link_to "Create New Animal", new_user_animal_path(current_user) %>
-
-<!--
- create_table "animals", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name"
-    t.integer "weight"
-    t.string "breed"
-    t.string "species"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_animals_on_user_id"
-  end
- -->
+<h2><b><%= current_user.name %>'s Pets:</b></h2>
+<% if current_user.animals.none? %>
+    <i> There are no pets currently on file. </i>
+  <% end %>
+  Select the pet you want more information on:
+  <br>
+  <br>
+  <% current_user.animals.each do |animal| %>
+    <ol>
+      <%= link_to animal.name, user_animal_path(current_user, animal) %>
+    </ol>
+  <% end %>
+  <br>
+<i>New member of the family? Click <%= link_to "here", new_user_animal_path(current_user) %>!</i>

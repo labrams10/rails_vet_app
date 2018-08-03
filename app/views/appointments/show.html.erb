@@ -1,1 +1,5 @@
-
+<h3><b><%= @appointment.date.strftime("%B %d, %Y") %></b></h3>
+<i>at <%= @appointment.time.strftime("%l %P") %></i>
+<br>
+<br>
+Would you like to <%= link_to "cancel" %> this appointment?

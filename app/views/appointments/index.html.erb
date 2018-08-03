@@ -1,9 +1,9 @@
 <h2>Current Appointments:</h2><br>
 <% current_user.appointments.each do |appointment| %>
 <ol>
-<%= appointment.date.strftime("%B %d, %Y") %> at
-<%= appointment.time.strftime("%l %P") %><br>
- with
+<h2><%= appointment.date.strftime("%B %d, %Y") %></h2> at
+<%= appointment.time.strftime("%l %P") %>
+ with Dr.
 <%= appointment.vet.name %>
 </ol>
 <% end %>

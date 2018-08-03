@@ -1,9 +1,12 @@
 <h1>Your Pets:</h1>
 
 <% @animals.each do |animal| %>
-<h2><%= animal.name %></h2>
-<h3><%= animal.breed %></h3>
-<% end %>
+<ol>
+<h2><b><%= animal.name %></b></h2>
+<p><%= animal.age %> year(s) old</p>
+<i><p><%= animal.breed %></p></i>
+</ol>
+<% end %><br>
 <%= link_to "Create New Animal", new_user_animal_path(current_user) %>
 
 <!--

@@ -1,12 +1,14 @@
-<h2>Hello, <%= current_user.name %>!</h2><br>
+<h1>Hello, <b><%= current_user.name %>!</b></h1><br>
 <h3>My Pets:</h3><br>
   <% current_user.animals.each do |animal| %>
     <ol>
-      <%= animal.name %>
+      <%= link_to animal.name, user_animal_path(animal) %>
     </ol>
   <% end %><br>
-<h3>My Appointments:</h3>
+<h3>My Appointments:</h3><br>
 <% current_user.appointments.each do |appointment| %>
-<%= appointment.date %>
-<%= appointment.time %>
+  <ol>
+    <%= appointment.date.strftime("%B %d, %Y") %> at
+    <%= appointment.time.strftime("%l %P") %><br>
+  </ol>
 <% end %>

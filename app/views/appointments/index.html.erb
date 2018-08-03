@@ -1,15 +1,18 @@
 <h2>Current Appointments:</h2><br>
+<% if current_user.appointments.none? %>
+    <b><i> You have no pending appointments.</i></b>
+<% end %>
 <% current_user.appointments.each do |appointment| %>
 <ol>
 <h2><%= appointment.date.strftime("%B %d, %Y") %></h2> at
-<%= appointment.time.strftime("%l %P") %>
+<%= appointment.time.strftime("%l %P") %><br>
  with Dr.
 <%= appointment.vet.name %>
 </ol>
+<%= link_to "Edit Appointment", edit_appointment_path(appointment) %><br>
 <% end %>
 <br>
 <br>
 <br>
 <br>
-<br>
-<p>Want to schedule a new appointment? Click <%= link_to "here", new_user_appointment_path(current_user) %>.</p>
+<p>To schedule a new appointment, click <%= link_to "here", new_user_appointment_path(current_user) %>.</p>

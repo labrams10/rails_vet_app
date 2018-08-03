@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     binding.pry unless authenticated
     @user = user
     session[:user_id] = @user.id
-    redirect_to user_animals_path(@user), notice: 'Thanks for signing in'
+    redirect_to user_path(@user), notice: 'Thanks for signing in'
   end
 
   def destroy

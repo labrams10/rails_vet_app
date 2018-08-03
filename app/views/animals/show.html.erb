@@ -1,7 +1,8 @@
-<h3>My Pets:</h3><br>
-  <% current_user.animals.each do |animal| %>
-    <ol>
-      <%= animal.name %>
-    </ol>
-  <% end %><br>
-<p>New member of the family? Click <%= link_to "here", new_animal_path(current_user) %> to add a new pet.</p>
+<h1><b><%= @animal.name %></b>...<i>the <%= @animal.breed %></i>!</h1>
+<br>
+<h3>Some fun facts about <%= @animal.name %>:</h3>
+<%= @animal.description %><br>
+<%= @animal.weight %>
+<br>
+<br>
+Go <%= link_to "back", user_animals_path(current_user) %>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/session/', to: 'sessions#destroy'
   get '/appointments', to: 'appointments#index', as: 'appointments'
   get '/appointments/:id/edit', to: 'appointments#edit', as: 'edit_appointment'
+  # delete 'appointments/:id', to: 'appointments#destroy', as: 'delete_appointment'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

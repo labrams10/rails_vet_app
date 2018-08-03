@@ -1,11 +1,20 @@
 <h1>Hello, <b><%= current_user.name %>!</b></h1><br>
 <h3>My Pets:</h3><br>
+<% if current_user.animals.none? %>
+    <i> There are no pets currently on file. </i>
+  <% end %>
   <% current_user.animals.each do |animal| %>
     <ol>
-      <%= link_to animal.name, user_animal_path(animal) %>
+      <%= link_to animal.name, user_animal_path(current_user, animal) %>
     </ol>
-  <% end %><br>
-<h3>My Appointments:</h3><br>
+  <% end %>
+  <br>
+  <br>
+  <br>
+<h3>My Appointments:</h3>
+<% if current_user.appointments.none? %>
+    <i>You have no pending appointments.</i>
+<% end %>
 <% current_user.appointments.each do |appointment| %>
   <ol>
     <%= appointment.date.strftime("%B %d, %Y") %> at

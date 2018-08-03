@@ -1,0 +1,7 @@
+<% current_user.animals.each do |animal| %>
+    <ol>
+      <h3><%= animal.name %></h3>
+    </ol>
+          <p><%= animal.description %></p>
+  <% end %>
+

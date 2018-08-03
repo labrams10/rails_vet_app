@@ -11,6 +11,11 @@
   <%= animal.label "breed" %>:
   <%= animal.text_field :breed %><br />
   <%= animal.label "age" %>:
-  <%= animal.number_field :age %><br /><br>
+  <%= animal.number_field :age %> years<br />
+    <%= animal.label "weight" %>:
+  <%= animal.text_field :weight %> lbs<br />
+  <%= animal.label "description" %>:
+  <%= animal.text_field :description %><br />
+  <br>
   <%= animal.submit "Create New Animal" %>
 <% end %>

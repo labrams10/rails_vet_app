@@ -1,8 +1,8 @@
 <h1>Your Pets:</h1>
-
+<br>
 <% @animals.each do |animal| %>
 <ol>
-<h2><b><%= animal.name %></b></h2>
+<h2><b><%= link_to animal.name, user_animal_path(current_user, animal) %></b></h2>
 <p><%= animal.age %> year(s) old</p>
 <i><p><%= animal.breed %></p></i>
 </ol>

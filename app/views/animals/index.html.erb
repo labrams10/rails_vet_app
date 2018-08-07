@@ -1,6 +1,6 @@
 <h1><b><%= current_user.name %>'s Pets:</b></h1>
 <% if current_user.animals.none? %>
-    <p><i>There are currently no pets on your file.</i></p>
+    <p>There are currently no pets on your file.</p>
     <br>
   <% else %>
   Select the pet you want more information on:
@@ -16,7 +16,7 @@
 <i>New member of the family? Click <%= link_to "here", new_user_animal_path(current_user) %> to tell us about your new friend!</i>
 <br>
 <br>
-or
+<b>or</b>
 <br>
 <br>
 Return <%= link_to "home", user_path(current_user) %>

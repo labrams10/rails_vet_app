@@ -1,8 +1,10 @@
 <h1><b><%= @animal.name %></b>...<i>the <%= @animal.breed %></i>!</h1>
 <br>
-<h3>Some fun facts about <%= @animal.name %>:</h3>
-<%= @animal.description %><br>
-<%= @animal.weight %> lbs
+<h2><%= @animal.name %> is...</h2>
+<p><i><%= @animal.description %></i></p>
+<br>
+<br>
+Weight: <%= @animal.weight %> lbs
 <br>
 <br>
 Go <%= link_to "back", user_animals_path(current_user) %>

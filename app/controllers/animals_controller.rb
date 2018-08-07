@@ -1,7 +1,8 @@
-class AnimalsController < ApplicationController
+# frozen_string_literal: true
 
+class AnimalsController < ApplicationController
   def index
-    @animals = User.find_by(id: current_user.id).animals
+    @animals = Animal.users_animals(current_user)
   end
 
   def new
@@ -9,8 +10,12 @@ class AnimalsController < ApplicationController
   end
 
   def create
-    @animal = current_user.animals.build(animal_params).save
-    redirect_to user_animals_path(current_user)
+    @animal = current_user.animals.build(animal_params)
+    if @animal.save
+      redirect_to user_animals_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,7 +26,7 @@ class AnimalsController < ApplicationController
     @animal = Animal.find_by(id: params[:id])
   end
 
-  private
+private
 
   def animal_params
     params.require(:animal).permit(:name, :breed, :age, :description, :weight)

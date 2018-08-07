@@ -1,9 +1,10 @@
 <h1>Schedule New Appointment Below:</h1><br>
 <%= form_for [current_user, @appointment] do |appointment| %>
+<%= form_errors_for @appointment %>
   <%= appointment.label "Date" %>:
   <%= appointment.date_select :date %><br />
   <%= appointment.label "Time" %>:
-  <%= appointment.time_select :time, {ampm: true, ignore_seconds: true} %><br />
+  <%= appointment.time_select :time, {ampm: true, ignore_seconds: true, minute_step: 15, start_hour: 8, end_hour: 17} %><br />
   <%= appointment.label "Select a Vet:" %><br>
   <%= appointment.collection_select(:vet_id, Vet.all, :id, :name) %><br>
   <br>

@@ -5,13 +5,12 @@ If you need to cancel an appointment, please select it below:
 <% if current_user.appointments.none? %>
 <b><i> You have no pending appointments.</i></b>
 <% end %>
-<ol>
+<tr>
 <% current_user.appointments.each do |appointment| %>
   <%= link_to appointment.date.strftime("%B %d, %Y"), user_appointment_path(current_user, appointment)%><br>
   <b>at <%= appointment.time.strftime("%l %P") %></b><br>
-  <i>with
-   Dr. <%= appointment.vet.name %></i>
-</ol>
+  <i>with Dr. <%= appointment.vet.name %></i><br><br>
+</tr>
 <% end %>
 <br>
 <br>

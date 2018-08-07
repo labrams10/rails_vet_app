@@ -1,14 +1,22 @@
-<h2><b><%= current_user.name %>'s Pets:</b></h2>
+<h1><b><%= current_user.name %>'s Pets:</b></h1>
 <% if current_user.animals.none? %>
-    <i> There are no pets currently on file. </i>
-  <% end %>
+    <p><i>There are currently no pets on your file.</i></p>
+    <br>
+  <% else %>
   Select the pet you want more information on:
   <br>
   <br>
-  <% current_user.animals.each do |animal| %>
-    <ol>
-      <%= link_to animal.name, user_animal_path(current_user, animal) %>
-    </ol>
+    <% current_user.animals.each do |animal| %>
+      <ol>
+      <h3><%= link_to animal.name, user_animal_path(current_user, animal) %></h3>
+      </ol>
+    <% end %>
   <% end %>
   <br>
-<i>New member of the family? Click <%= link_to "here", new_user_animal_path(current_user) %>!</i>
+<i>New member of the family? Click <%= link_to "here", new_user_animal_path(current_user) %> to tell us about your new friend!</i>
+<br>
+<br>
+or
+<br>
+<br>
+Return <%= link_to "home", user_path(current_user) %>

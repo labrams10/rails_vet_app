@@ -1,5 +1,12 @@
 <h3><b><%= @appointment.date.strftime("%B %d, %Y") %></b></h3>
-<i>at <%= @appointment.time.strftime("%l %P") %></i>
+<i>at <%= @appointment.time.strftime("%l %P") %> with Dr. <%= @appointment.vet.name %></i>
 <br>
 <br>
-Would you like to <%= link_to "cancel" %> this appointment?
+<br>
+<h3><i>Can't make this appointment?</i></h3>
+<%= button_to 'Cancel', user_appointment_path(@appointment.id), :method => :delete, :confirm => 'Are you sure?' %>
+<br>
+<br>
+<i>or</i>
+<br>
+Go back to view your <%= link_to "current appointments", user_appointments_path(current_user) %>.

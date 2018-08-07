@@ -1,24 +1,21 @@
-# README
+# Rails Veterinary Services
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application allows you to communicate with Rails Veterinary Service and sign up, log in, input information about your animals, and then schedule veterinary care appointments for those animals. All of this functionality is available through this application.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Fork and clone this repository, run `bundle install`, then run `rails s` to work with a local server.
 
-* System dependencies
+## Usage
 
-* Configuration
+TODO: Write usage instructions here
 
-* Database creation
+## Development
 
-* Database initialization
+## Contributing
 
-* How to run the test suite
+Bug reports and pull requests are welcome on GitHub at https://github.com/labrams10/rails_vet_app.
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
-
-* ...
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

@@ -1,6 +1,6 @@
 <h2>Please Sign Up To Continue:</h2>
 <br>
-<%= form_for @user, url: new_user_path, method: :post do |f| %>
+<%= form_for @user do |f| %>
 <%= form_errors_for @user %>
 <%= f.label "Name:" %>
 <%= f.text_field :name, required: true %>

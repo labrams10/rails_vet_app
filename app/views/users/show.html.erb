@@ -12,7 +12,7 @@
 <% current_user.appointments.each do |appointment| %>
     <%= appointment.date.strftime("%B %d, %Y") %>
     <br>
-    at <%= appointment.time.strftime("%l %P") %>
+    at <%= appointment.time.strftime("%l %P") %> with Dr. <%= appointment.vet.name %>
     <br>
     <br>
     <br>

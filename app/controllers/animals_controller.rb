@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AnimalsController < ApplicationController
+  before_action :set_animal
+
   def index
     @animals = Animal.users_animals(current_user)
   end
@@ -30,5 +32,9 @@ private
 
   def animal_params
     params.require(:animal).permit(:name, :breed, :age, :description, :weight)
+  end
+
+  def set_animal
+    @animal = Animal.find(params[:user_id])
   end
 end

@@ -16,10 +16,10 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
 - [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
-- [ ] Conforms to Nitro Ruby linting rules
+- [x] Views use partials if appropriate
+- [x] Conforms to Nitro Ruby linting rules
 
 If you've added any Bonus functionality to your application, please describe it below:

@@ -12,5 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require animal_presenter
 //= require_tree .
-require bootstrap-datepicker

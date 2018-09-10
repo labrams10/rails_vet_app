@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#home"
   resources :users do
-    resources :animals
+    resources :animals do
+      resources :foodbrands
+    end
     resources :appointments
   end
   resources :vets

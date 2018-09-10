@@ -5,6 +5,11 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = Animal.users_animals(current_user)
+
+    respond_to do |format|
+      format.html {render 'animals/index'}
+      format.json {render :json => @animals.to_json(:only => [:name])}
+    end
   end
 
   def new
@@ -24,8 +29,12 @@ class AnimalsController < ApplicationController
     @animal = Animal.find_by(id: params[:id])
   end
 
+  def update
+  end
+
   def show
     @animal = Animal.find_by(id: params[:id])
+    @foodbrand = Foodbrand.new
   end
 
 private

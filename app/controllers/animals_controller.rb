@@ -30,18 +30,20 @@ class AnimalsController < ApplicationController
   end
 
   def next_show
-    binding.pry
+    @animal = Animal.find_by(id: params[:id])
+    @foodbrand = Foodbrand.new
+
     respond_to do |format|
       format.json { render json: @animal.to_json(only: [:name, :description, :weight],
                                 include: [foodbrand: { only: [:name]}]) }
     end
   end
 
-  def update
-  end
-
   def show
+    users_animals = Animal.where(user: current_user)
+
     @animal = Animal.find_by(id: params[:id])
+    @next_animal = users_animals.find_by("id > :current_animal_id", current_animal_id: @animal.id) || users_animals.first
     @foodbrand = Foodbrand.new
   end
 

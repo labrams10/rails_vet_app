@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on("turbolinks:load", function() {
   $("a.load_animals").on("click", function(e) {
     e.preventDefault();
 
@@ -21,33 +21,37 @@ $(document).ready(function() {
   })
 
   $("#new_foodbrand").on("submit", function(e) {
-    // e.target.dataset.disableWith
+    e.preventDefault();
 
-    $.ajax({
+    var request = $.ajax({
       type: "POST",
       url: this.action,
-      data: $(this).serialize(),
-      success: function(foodbrand) {
+      data: $(this).serialize()
+    });
+
+    request.done(function(foodbrand) {
         $("#foodbrand_name").val("")
         let newFoodbrand = new FoodbrandPresenter(foodbrand);
         console.log(newFoodbrand.foodbrandEl());
         $("#foodbrands_list").append(newFoodbrand.foodbrandEl());
-        //TODO: figure out how to enable button after form-submit
-      }
-    });
-    e.preventDefault();
+      });
+    request.always(function() {
+        $("input[type='submit']").removeAttr('data-disable-with');
+        $("input[type='submit']").prop("disabled", false);
+      });
+
     $("#foodbrand_submit").prop('disabled', false)
   })
 
-  $("a.next_animal").on("click", function(e) {
-    e.preventDefault();
+  // $("a.next_animal").on("click", function(e) {
+  //   e.preventDefault();
 
-    $.ajax({
-      dataType: "json",
-      method: "GET",
-      url: this.href
-    }).done(function(animal) {
-
-    })
-  })
+  //   $.ajax({
+  //     dataType: "json",
+  //     method: "GET",
+  //     url: this.href
+  //   }).done(function(animal) {
+  //     $("#")
+  //   })
+  // })
 })

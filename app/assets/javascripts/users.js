@@ -19,9 +19,7 @@ $(document).ready(function() {
       }
     })
   })
-})
 
-$(function() {
   $("#new_foodbrand").on("submit", function(e) {
     // e.target.dataset.disableWith
 
@@ -34,15 +32,22 @@ $(function() {
         let newFoodbrand = new FoodbrandPresenter(foodbrand);
         console.log(newFoodbrand.foodbrandEl());
         $("#foodbrands_list").append(newFoodbrand.foodbrandEl());
-
-        // $('#foodbrand_name').append( JSON.stringify(foodbrand));
-
-        // var $ol = foodbrand["name"]
-        // need to do some formatting. Trying to append something that won't work (a hash)
-        // $("#foodbrand_name").append(foodbrand["name"])
+        //TODO: figure out how to enable button after form-submit
       }
     });
     e.preventDefault();
+    $("#foodbrand_submit").prop('disabled', false)
+  })
+
+  $("a.next_animal").on("click", function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      dataType: "json",
+      method: "GET",
+      url: this.href
+    }).done(function(animal) {
+
+    })
   })
 })
-

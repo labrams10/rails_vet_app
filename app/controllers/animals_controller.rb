@@ -29,6 +29,14 @@ class AnimalsController < ApplicationController
     @animal = Animal.find_by(id: params[:id])
   end
 
+  def next_show
+    binding.pry
+    respond_to do |format|
+      format.json { render json: @animal.to_json(only: [:name, :description, :weight],
+                                include: [foodbrand: { only: [:name]}]) }
+    end
+  end
+
   def update
   end
 

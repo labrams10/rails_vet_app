@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.3.7"
 
+gem 'rspec-rails'
+gem 'factory_bot_rails'
 gem "autoprefixer-rails"
 gem "bcrypt"
 gem "bootstrap-sass", "~> 3.2.0"

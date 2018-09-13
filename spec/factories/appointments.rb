@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :appointment do
-    date "date"
-    time "time"
+    date Date.today
+    time Time.current
     user
     vet
   end

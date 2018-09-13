@@ -3,22 +3,19 @@ require 'rails_helper'
 RSpec.describe User do
   let(:user) { subject }
 
-  it 'has many animals' do
-    animal = create(:animal)
+  it { should have_many(:animals) }
 
-    user.animals << animal
-    user.save
-
-    expect(animal.user).to eq(user)
+  it "is invalid when non-unique" do
+    some_user = build(:user, name: "Lauren", email: "lauren@example.com")
+    some_user.save
+    user = build(:user, name: "Lauren", email: "lauren@example.com")
+    expect(user).to be_invalid
   end
 
-  it 'has many appointments' do
-    appointment = create(:appointment)
-
-    user.appointments << appointment
-    user.save
-
-    expect(appointment.user).to eq(user)
+  it "has a valid factory" do
+    expect(build(:user)).to be_valid
   end
+
+  it { should have_many(:appointments) }
 
 end

@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Appointment do
-  let(:appointment) { subject }
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:date) }
     it { is_expected.to validate_presence_of(:time) }
   end
 
-  it 'belongs to a user' do
-    user = create(:user)
-    appointment.user = user
-    appointment.save
+  it "has a valid factory" do
+    expect(build(:appointment)).to be_valid
+  end
 
-    expect(user.appointments).to include(appointment)
+  it 'belongs to a user' do
+    expect(described_class.new).to belong_to(:user)
   end
 end

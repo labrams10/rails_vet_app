@@ -9,20 +9,13 @@ RSpec.describe Animal do
   end
 
   it 'belongs to a user' do
-    user = create(:user)
-    animal = create(:animal, user: user)
-
-    expect(user.animals).to include(animal)
+    expect(described_class.new).to belong_to(:user)
   end
 
-  it 'has many foodbrands' do
-    animal = create(:animal)
-    foodbrand = Foodbrand.create
+  it { should have_many(:foodbrands) }
 
-    animal.foodbrands << foodbrand
-    animal.save
-
-    expect(foodbrand.animal).to eq(animal)
+  it "has a valid factory" do
+    expect(build(:animal)).to be_valid
   end
 
 end

@@ -18,6 +18,7 @@ RSpec.describe AnimalsController do
     end
   end
 
+
   # describe "GET #index" do
   #   it "assigns @animals" do
   #     animal = create(:animal)

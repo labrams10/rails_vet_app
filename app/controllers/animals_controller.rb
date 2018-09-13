@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class AnimalsController < ApplicationController
-  before_action :set_animal
+  before_action :set_animal, except: %i[new index]
 
   def index
     @animals = Animal.users_animals(current_user)
 
     respond_to do |format|
-      format.html {render 'animals/index'}
-      format.json {render :json => @animals.to_json(:only => [:name])}
+      format.html { render "animals/index" }
+      format.json { render json: @animals.to_json(only: [:name]) }
     end
   end
 
@@ -34,16 +34,16 @@ class AnimalsController < ApplicationController
     @foodbrand = Foodbrand.new
 
     respond_to do |format|
-      format.json { render json: @animal.to_json(only: [:name, :description, :weight],
-                                include: [foodbrand: { only: [:name]}]) }
+      format.json do
+        render json: @animal.to_json(only: %i[name description weight],
+                                     include: [foodbrand: { only: [:name] }])
+      end
     end
   end
 
   def show
-    users_animals = Animal.where(user: current_user)
-
     @animal = Animal.find_by(id: params[:id])
-    @next_animal = users_animals.find_by("id > :current_animal_id", current_animal_id: @animal.id) || users_animals.first
+    @next_animal = next_or_previous_animal_for(@animal)
     @foodbrand = Foodbrand.new
   end
 
@@ -55,5 +55,13 @@ private
 
   def set_animal
     @animal = Animal.find(params[:user_id])
+  end
+
+  def next_or_previous_animal_for(current_animal)
+    users_animals = Animal.where(user: current_user)
+    users_animals.find_by(
+      "id > :current_animal_id",
+      current_animal_id: current_animal.id
+    ) || users_animals.first
   end
 end

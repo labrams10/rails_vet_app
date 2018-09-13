@@ -3,15 +3,10 @@
 class Animal < ActiveRecord::Base
   has_many :foodbrands
   belongs_to :user
-  validates :name, :weight, :breed, :age, presence: true
+
+  validates :name, presence: true
+  validates :weight, presence: true
+  validates :breed, presence: true
+  validates :age, presence: true
   scope :users_animals, ->(user) { where(user: user) }
-
-  # def self.users_animals(user)
-  #   where(user: user)
-  # end
-
-  # NOTE: this is a different way to execute the
-  # same functionality around using scope
-
-  # scope :users_animals, -> { where(user: user) }
 end

@@ -9,6 +9,15 @@ RSpec.describe AnimalsController do
     end
   end
 
+  describe 'GET #index' do
+    it 'shows a users animals if logged in' do
+      user = create(:user)
+      session[:user_id] = user.id
+      get :index, params: {user_id: user.id}
+      expect(response.status).to eq(200)
+    end
+  end
+
   # describe "GET #index" do
   #   it "assigns @animals" do
   #     animal = create(:animal)

@@ -4,9 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Rails Veterinary Services</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i"/>
-    <link rel="stylesheet" href="assets/css/untitled.css"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,10 +16,6 @@
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
       <div class="container">
         <a class="navbar-brand logo">Rails Veterinary Services</a>
-       <!--  <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1"> -->
           <ul class="nav navbar-nav ml-auto">
             <% if user_signed_in? %>
              <li role="presentation"><%= link_to "Home", user_path(current_user), class: "nav-item nav-link active" %></a>

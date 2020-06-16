@@ -1,5 +1,9 @@
 <h1>Hello, <b><%= current_user.name %>!</b></h1>
-<p>Click <%= link_to "here", user_animals_path(current_user) %> to see your pets.</p>
+<p>Click <%= link_to "here", user_animals_path(current_user), :class => "load_animals" %> to see your pets.</p>
+  <br>
+  <ol id="animals_list">
+
+  </ol>
   <br>
 <h3>Upcoming Appointment:</h3>
 <% if current_user.appointments.none? %>

@@ -4,7 +4,29 @@
 <p><i><%= @animal.description %></i></p>
 <br>
 <br>
-Weight: <%= @animal.weight %> lbs
+<h3><strong>Weight:</h3></strong><%= @animal.weight %> lbs
+<br>
+<br>
+<br>
+<br>
+<strong>What's your pet's favorite food brand?</strong>
+<br>
+<br>
+  <ol id="foodbrands_list">
+    <% @animal.foodbrands.each do |brand| %>
+      <li><%= brand.name %></li>
+    <% end %>
+  </ol>
+<br>
+<%= form_for [current_user, @animal, @foodbrand] do |foodbrand| %>
+  <%= foodbrand.label "Food Brand" %>:
+  <%= foodbrand.text_field :name %><br />
+  <%= foodbrand.submit "Add Food", id: "foodbrand_submit", data: { turbolinks: "false" } %>
+  <% end %>
+  <br>
+ Next <%= link_to "animal", user_animal_path(current_user, @next_animal) %>
+<br>
 <br>
 <br>
 Go <%= link_to "back", user_animals_path(current_user) %>
+
